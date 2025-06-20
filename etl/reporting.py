@@ -2,7 +2,7 @@ import duckdb
 import pandas as pd
 
 def generate_reports(con):
-    print("📊 Generating reports from `fact_order`...\n")
+    print("Generating reports from `fact_order`...\n")
 
     # 1. Top 5 customers by total amount
     top_customers_df = con.execute("""
@@ -17,7 +17,7 @@ def generate_reports(con):
         LIMIT 5;
     """).fetchdf()
 
-    print("🏆 Top 5 Customers by Total Amount:")
+    print("Top 5 Customers by Total Amount:")
     print(top_customers_df, end="\n\n")
 
     # 2. Top selling Products for the first 4 months of 2010
@@ -68,7 +68,7 @@ def generate_reports(con):
         lambda row: f"{int(row['year'])}-{int(row['month']):02d}", axis=1
     )
 
-    print("📆 Monthly Revenue Trends (Graph-Ready):")
+    print("Monthly Revenue Trends (Graph-Ready):")
     print(monthly_revenue_df)
 
     return {
